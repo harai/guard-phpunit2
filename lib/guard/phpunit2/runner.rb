@@ -189,7 +189,7 @@ module Guard
           cmd_parts = []
           cmd_parts << command
           cmd_parts << "--include-path #{formatter_path}"
-          cmd_parts << "--printer PHPUnit_Extensions_Progress_ResultPrinter"
+          # cmd_parts << "--printer PHPUnit_Extensions_Progress_ResultPrinter"
 
           # Allow callers to inject some parts if needed
           yield cmd_parts if block_given?
