@@ -181,14 +181,14 @@ module Guard
         # @see #run_tests
         #
         def phpunit_command(path, options)
-          formatter_path = File.expand_path( File.join( File.dirname(__FILE__), '..', 'phpunit', 'formatters', 'PHPUnit-Progress') )
+          # formatter_path = File.expand_path( File.join( File.dirname(__FILE__), '..', 'phpunit', 'formatters', 'PHPUnit-Progress') )
           
           command = "phpunit"
           command = options[:command] if options[:command]
 
           cmd_parts = []
           cmd_parts << command
-          cmd_parts << "--include-path #{formatter_path}"
+          # cmd_parts << "--include-path #{formatter_path}"
           # cmd_parts << "--printer PHPUnit_Extensions_Progress_ResultPrinter"
 
           # Allow callers to inject some parts if needed
