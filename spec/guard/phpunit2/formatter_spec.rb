@@ -13,6 +13,17 @@ describe Guard::PHPUnit2::Formatter do
       end
     end
     
+    context 'when a single test passes' do
+      it 'returns a hash containing the test result' do
+        output = load_phpunit_output('passing1')
+        subject.parse_output(output).should == {
+          :tests  => 1, :failures => 0,
+          :errors => 0, :pending  => 0,
+          :duration => [0, "seconds"]
+        }
+      end
+    end
+    
     context 'when all tests fail' do
       it 'returns a hash containing the tests result' do
         output = load_phpunit_output('failing')

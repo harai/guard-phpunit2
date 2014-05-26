@@ -15,7 +15,7 @@ module Guard
         #
         def parse_output(text)
           results = {
-            :tests    => look_for_words_in('(?:Tests:|tests)',    text),
+            :tests    => look_for_words_in('(?:Tests:|tests?)', text),
             :failures => look_for_words_in('Failures:', text),
             :errors   => look_for_words_in('Errors:', text),
             :pending  => look_for_words_in(['Skipped:', 'Incomplete:'], text),
@@ -70,8 +70,8 @@ module Guard
         # @return [Integer] the duration
         #
         def look_for_duration_in(text)
-          text      =~ %r{Time: (\d+)\s+(\w+)?.*$}
-          time      = $1.nil? ? 0 : $1.to_i
+          text      =~ %r{Time: (\d+(?:\.\d+)?)\s+(\w+)?.*$}
+          time      = $1.nil? ? 0 : $1.to_f
           time_name = $2.nil? ? "sec" : $2
 
           return time, time_name
